@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="董易嘉的个人网站：物流管理、新媒体创作、商业思维与内容创作。">
+  <meta name="theme-color" content="#ffffff">
+  <title>董易嘉 · 个人网站</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231d1d1f'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='32' font-family='Arial' font-weight='700' fill='white'%3EY%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js')</script>
+  <style>
+    :root {
+      --white: #ffffff;
+      --surface: #f5f5f7;
+      --ink: #1d1d1f;
+      --body: #333336;
+      --muted: #86868b;
+      --blue: #0071e3;
+      --line: #d2d2d7;
+      --success: #248a3d;
+      --shadow-sm: 0 10px 30px rgba(0, 0, 0, .045);
+      --shadow-md: 0 22px 60px rgba(0, 0, 0, .09);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --max: 1180px;
+      --nav-h: 64px;
+    }
+
+    * { box-sizing: border-box; }
+    html { overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--body);
+      background: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, textarea { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ::selection { color: var(--white); background: var(--blue); }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 9999;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--ink);
+      border-radius: 10px;
+      transform: translateY(-140%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .scroll-progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 1200;
+      width: 0;
+      height: 2px;
+      background: var(--blue);
+    }
+
+    .container { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+    .section { padding: 132px 0; }
+    .section.alt { background: var(--surface); }
+    .section-kicker {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .section-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+    .section-subtitle {
+      max-width: 680px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.55;
+    }
+    .section-head.center { text-align: center; }
+    .section-head.center .section-subtitle { margin-inline: auto; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(255,255,255,.68);
+      border-bottom: 1px solid transparent;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      transition: background .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(255,255,255,.92);
+      border-color: rgba(210,210,215,.72);
+      box-shadow: 0 8px 30px rgba(0,0,0,.05);
+    }
+    .nav-shell {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 100%;
+    }
+    .brand {
+      justify-self: start;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 750;
+      letter-spacing: -.02em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 520;
+      transition: color .2s ease;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      bottom: -8px;
+      height: 1px;
+      background: var(--ink);
+      transition: left .25s ease, right .25s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { left: 0; right: 0; }
+    .nav-actions { justify-self: end; display: flex; align-items: center; gap: 10px; }
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      background: var(--surface);
+      border-radius: 999px;
+    }
+    .lang-switch button {
+      min-width: 34px;
+      height: 28px;
+      padding: 0 9px;
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      border-radius: 999px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .lang-switch .active { color: var(--ink); background: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .resume-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 16px;
+      color: var(--white);
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 650;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .resume-button:hover { transform: scale(1.03); background: #000; }
+    .menu-button { display: none; width: 38px; height: 38px; padding: 0; background: transparent; border: 0; cursor: pointer; }
+    .menu-button span { display: block; width: 20px; height: 1px; margin: 5px auto; background: var(--ink); transition: transform .25s ease, opacity .25s ease; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      padding-top: var(--nav-h);
+      background: var(--white);
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      align-items: center;
+      min-height: calc(100svh - var(--nav-h));
+      gap: 32px;
+    }
+    .hero-copy { position: relative; z-index: 2; padding: 90px 0 78px; }
+    .open-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 520;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--blue);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(0,113,227,.10);
+    }
+    .hero h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(64px, 8.5vw, 110px);
+      line-height: .95;
+      letter-spacing: -.065em;
+      font-weight: 760;
+    }
+    .hero h1 span { display: block; }
+    .hero-role {
+      margin: 32px 0 0;
+      color: var(--body);
+      font-size: clamp(17px, 1.8vw, 20px);
+      font-weight: 570;
+      line-height: 1.55;
+      letter-spacing: -.018em;
+    }
+    .hero-intro {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 24px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 650;
+      transition: transform .22s ease, color .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+    .button.primary { color: var(--white); background: var(--ink); }
+    .button.secondary { color: var(--ink); background: var(--white); }
+    .button:hover { transform: translateY(-2px) scale(1.015); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
+    .button.primary:hover { color: var(--ink); background: var(--white); }
+    .button.secondary:hover { background: var(--surface); }
+    .social-row { display: flex; align-items: center; gap: 10px; margin-top: 36px; }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid transparent;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 750;
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .social-link:hover { color: var(--blue); background: var(--white); border-color: var(--line); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: relative;
+      height: min(78vh, 760px);
+      min-height: 560px;
+      will-change: transform;
+      transition: transform .18s ease-out;
+    }
+    .hero-halo {
+      position: absolute;
+      inset: 12% 0 8%;
+      background: radial-gradient(circle at 50% 46%, rgba(255,255,255,.98) 0, rgba(235,241,248,.78) 25%, rgba(245,245,247,.25) 53%, transparent 72%);
+      filter: blur(1px);
+    }
+    .hero-portrait {
+      position: absolute;
+      inset: 3% -5% 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 2;
+    }
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: drop-shadow(0 32px 45px rgba(28, 34, 42, .13));
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 83%, transparent 99%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 83%, transparent 99%);
+    }
+    .placeholder-mark { position: relative; z-index: 2; margin-top: -8%; }
+    .placeholder-mark strong { display: block; color: var(--body); font-size: 17px; }
+    .placeholder-mark span { display: block; margin-top: 6px; font-size: 13px; }
+    .placeholder-icon {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 16px;
+      color: var(--blue);
+      background: var(--white);
+      border: 1px solid rgba(0,113,227,.2);
+      border-radius: 18px;
+      font-size: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .particle {
+      position: absolute;
+      z-index: 3;
+      width: var(--size, 3px);
+      height: var(--size, 3px);
+      left: var(--x);
+      top: var(--y);
+      background: rgba(134,134,139,.45);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255,255,255,.9);
+      animation: particleFloat var(--duration, 6s) ease-in-out var(--delay, 0s) infinite alternate;
+    }
+    @keyframes particleFloat { to { transform: translate3d(6px, -22px, 0); opacity: .25; } }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 64px;
+    }
+    .capability-card {
+      overflow: hidden;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform .32s ease, box-shadow .32s ease;
+    }
+    .capability-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+    .card-image {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: linear-gradient(145deg, #fff, #e9e9ed);
+      border-bottom: 1px solid rgba(210,210,215,.7);
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s cubic-bezier(.2,.75,.25,1), filter .35s ease;
+    }
+    .capability-card:hover .card-image img,
+    .work-card:hover .card-image img { transform: scale(1.045); filter: saturate(1.04); }
+    .capability-content { padding: 28px; }
+    .capability-content h3 { margin: 0; color: var(--ink); font-size: 23px; line-height: 1.25; letter-spacing: -.025em; }
+    .capability-content p { min-height: 86px; margin: 14px 0 22px; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 3px 10px;
+      color: var(--body);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 72px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .stat { padding: 42px 24px; text-align: center; }
+    .stat + .stat { border-left: 1px solid var(--line); }
+    .stat strong { display: block; color: var(--ink); font-size: clamp(46px, 6vw, 72px); line-height: 1; letter-spacing: -.05em; }
+    .stat span { display: block; margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+    .timeline { position: relative; max-width: 980px; margin: 72px auto 0; }
+    .timeline::before { content: ""; position: absolute; top: 10px; bottom: 10px; left: 17px; width: 1px; background: var(--line); }
+    .timeline-item { position: relative; display: grid; grid-template-columns: 36px 1fr; gap: 28px; padding-bottom: 30px; }
+    .timeline-dot {
+      position: relative;
+      z-index: 2;
+      width: 11px;
+      height: 11px;
+      margin: 9px 0 0 12px;
+      background: var(--white);
+      border: 1px solid #a8a8ad;
+      border-radius: 50%;
+      box-shadow: 0 0 0 7px var(--surface);
+    }
+    .timeline-item:first-child .timeline-dot { background: var(--blue); border-color: var(--blue); }
+    .timeline-card {
+      padding: 28px 30px;
+      background: var(--white);
+      border: 1px solid rgba(210,210,215,.78);
+      border-radius: 18px;
+      box-shadow: 0 10px 34px rgba(0,0,0,.035);
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .timeline-card:hover { transform: translateX(6px); box-shadow: 0 16px 44px rgba(0,0,0,.07); }
+    .timeline-meta { margin: 0 0 8px; color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .015em; }
+    .timeline-card h3 { margin: 0; color: var(--ink); font-size: 23px; line-height: 1.35; letter-spacing: -.022em; }
+    .timeline-card .role { margin: 6px 0 0; color: var(--blue); font-size: 15px; font-weight: 600; }
+    .timeline-card ul { margin: 18px 0 20px; padding-left: 20px; color: var(--body); }
+    .timeline-card li + li { margin-top: 8px; }
+    .timeline-card li::marker { color: var(--line); }
+
+    .education-card {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 44px;
+      max-width: 980px;
+      margin: 58px auto 0;
+      padding: 42px;
+      color: var(--white);
+      background: var(--ink);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+    .education-card .section-kicker { color: #8ec5ff; }
+    .education-card h3 { margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: -.035em; }
+    .education-card .degree { margin: 12px 0 0; color: rgba(255,255,255,.72); }
+    .education-card .year { margin: 20px 0 0; color: rgba(255,255,255,.48); font-size: 14px; }
+    .education-card ul { margin: 0; padding-left: 20px; color: rgba(255,255,255,.82); }
+    .education-card li + li { margin-top: 9px; }
+    .education-card li::marker { color: var(--blue); }
+
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 64px; }
+    .work-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid rgba(210,210,215,.7);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform .32s ease, box-shadow .32s ease;
+    }
+    .work-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+    .work-card .card-image { aspect-ratio: 4 / 3; }
+    .work-index { position: absolute; top: 16px; right: 18px; z-index: 2; color: rgba(29,29,31,.35); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+    .work-content { padding: 25px 24px 26px; }
+    .work-content h3 { margin: 0; color: var(--ink); font-size: 21px; line-height: 1.4; letter-spacing: -.02em; }
+    .work-content p { min-height: 50px; margin: 11px 0 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .work-link { display: inline-flex; margin-top: 21px; color: var(--blue); font-size: 14px; font-weight: 600; }
+    .work-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 64px; }
+    .skill-panel { padding: 42px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+    .skill-panel h3 { margin: 0 0 30px; color: var(--ink); font-size: 30px; letter-spacing: -.03em; }
+    .skill-group + .skill-group { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .skill-group h4 { margin: 0 0 14px; color: var(--muted); font-size: 13px; letter-spacing: .08em; }
+    .skill-cloud { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .skill-chip { padding: 8px 13px; color: var(--body); background: var(--surface); border-radius: 999px; font-size: 14px; }
+    .skill-chip.large { color: var(--ink); font-size: 18px; font-weight: 650; }
+    .skill-chip.medium { font-size: 16px; font-weight: 560; }
+    .hobby-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .hobby {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 62px;
+      padding: 13px 15px;
+      color: var(--body);
+      background: var(--surface);
+      border-radius: 16px;
+      transition: transform .22s ease, background .22s ease;
+    }
+    .hobby:hover { transform: translateY(-3px); background: #ececf0; }
+    .hobby span:first-child { font-size: 22px; }
+    .hobby span:last-child { font-size: 14px; }
+
+    .contact { text-align: center; }
+    .contact .section-subtitle { margin-inline: auto; }
+    .contact-wrap { width: min(100%, 700px); margin: 58px auto 0; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .field { position: relative; margin-bottom: 34px; }
+    .field label { display: block; margin-bottom: 8px; color: var(--muted); font-size: 13px; }
+    .field input, .field textarea {
+      display: block;
+      width: 100%;
+      padding: 8px 0 14px;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      outline: none;
+      font-size: 17px;
+      transition: border-color .2s ease;
+    }
+    .field textarea { min-height: 118px; resize: vertical; }
+    .field input:focus, .field textarea:focus { border-color: var(--blue); }
+    .contact-submit { width: 100%; border: 0; cursor: pointer; }
+    .form-status { min-height: 26px; margin: 14px 0 0; color: var(--success); text-align: center; font-size: 14px; }
+    .contact-info { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 24px; margin-top: 38px; color: var(--muted); font-size: 14px; }
+    .contact-info a:hover { color: var(--blue); }
+
+    .site-footer { padding: 32px 0 44px; background: var(--white); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social .social-link { width: 34px; height: 34px; font-size: 11px; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      z-index: 2000;
+      max-width: calc(100vw - 40px);
+      padding: 12px 18px;
+      color: var(--white);
+      background: rgba(29,29,31,.94);
+      border-radius: 999px;
+      box-shadow: var(--shadow-md);
+      font-size: 14px;
+      opacity: 0;
+      transform: translate(-50%, 18px);
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .72s cubic-bezier(.2,.75,.25,1), transform .72s cubic-bezier(.2,.75,.25,1); }
+    .js .reveal.from-right { transform: translateX(24px); }
+    .js .reveal.is-visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: .08s !important; }
+    .reveal-delay-2 { transition-delay: .16s !important; }
+
+    @media (max-width: 980px) {
+      .section { padding: 104px 0; }
+      .nav-shell { grid-template-columns: 1fr auto; }
+      .nav-links {
+        position: absolute;
+        top: calc(var(--nav-h) - 1px);
+        left: -24px;
+        right: -24px;
+        display: grid;
+        gap: 0;
+        padding: 10px 24px 20px;
+        background: rgba(255,255,255,.97);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 16px 30px rgba(0,0,0,.06);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity .22s ease, transform .22s ease;
+      }
+      .nav-links.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+      .nav-links a { padding: 12px 2px; font-size: 15px; }
+      .nav-actions .resume-button { display: none; }
+      .menu-button { display: block; }
+      .hero-grid { grid-template-columns: 1fr; min-height: auto; padding-top: 70px; }
+      .hero-copy { padding: 70px 0 0; }
+      .hero-visual { width: min(620px, 100%); height: 660px; margin: 0 auto; }
+      .capability-grid { grid-template-columns: 1fr 1fr; }
+      .capability-card:last-child { grid-column: span 2; }
+      .capability-card:last-child .card-image { aspect-ratio: 2 / 1; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .education-card { grid-template-columns: 1fr; gap: 30px; }
+      .skills-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      :root { --nav-h: 58px; }
+      .container { width: min(calc(100% - 32px), var(--max)); }
+      .section { padding: 84px 0; }
+      .section-title { font-size: 42px; }
+      .nav-links { left: -16px; right: -16px; padding-inline: 16px; }
+      .hero-grid { gap: 0; }
+      .hero-copy { padding-top: 52px; }
+      .open-label { margin-bottom: 24px; }
+      .hero h1 { font-size: clamp(58px, 18vw, 78px); }
+      .hero-role { margin-top: 24px; font-size: 18px; }
+      .hero-intro { font-size: 16px; }
+      .hero-actions { flex-direction: column; }
+      .button { width: 100%; }
+      .hero-visual { height: 520px; min-height: 0; }
+      .hero-portrait { inset: 2% -3% 0; }
+      .capability-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
+      .capability-card:last-child { grid-column: auto; }
+      .capability-card:last-child .card-image { aspect-ratio: 16 / 10; }
+      .capability-content p { min-height: 0; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat { padding: 32px 20px; }
+      .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
+      .timeline { margin-top: 54px; }
+      .timeline::before { left: 8px; }
+      .timeline-item { grid-template-columns: 18px 1fr; gap: 13px; }
+      .timeline-dot { margin-left: 3px; box-shadow: 0 0 0 5px var(--surface); }
+      .timeline-card { padding: 22px 20px; }
+      .timeline-card h3 { font-size: 20px; }
+      .education-card { padding: 28px 24px; border-radius: 22px; }
+      .skill-panel { padding: 28px 22px; border-radius: 22px; }
+      .hobby-list { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .contact-info { align-items: center; flex-direction: column; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="#home" aria-label="返回主页">董易嘉</a>
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="#home">主页</a>
+        <a href="#journey">经历</a>
+        <a href="#portfolio">作品</a>
+        <a href="#skills">技能</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" aria-label="语言切换">
+          <button class="active" type="button" id="chineseButton" aria-pressed="true">中</button>
+          <button type="button" id="englishButton" aria-pressed="false">EN</button>
+        </div>
+        <a class="resume-button" href="./董易嘉-简历-公开版.pdf" download>下载简历</a>
+        <button class="menu-button" id="menuButton" type="button" aria-label="打开导航菜单" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="open-label reveal"><span class="status-dot" aria-hidden="true"></span>求职中 · Open to Work</div>
+          <h1 class="reveal reveal-delay-1"><span>你好，我是</span><span>董易嘉</span></h1>
+          <p class="hero-role reveal reveal-delay-1">物流管理学习者 · 新媒体创作者 · 内容创作者 · 商业思维实践者</p>
+          <p class="hero-intro reveal reveal-delay-2">在供应链与内容创作之间寻找交集，用商业思维做创意，用创意表达做商业。</p>
+          <div class="hero-actions reveal reveal-delay-2">
+            <a class="button primary" href="#journey">查看我的经历 →</a>
+            <a class="button secondary" href="#contact">联系我</a>
+          </div>
+          <div class="social-row reveal reveal-delay-2" aria-label="社交媒体">
+            <a class="social-link" href="mailto:jace1jia07@163.com" aria-label="发送邮件" title="邮箱">邮</a>
+            <a class="social-link placeholder-social" href="#" aria-label="B站链接待补充" title="B站">B</a>
+            <a class="social-link placeholder-social" href="#" aria-label="抖音链接待补充" title="抖音">抖</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" id="heroVisual" aria-label="董易嘉动漫形象立绘">
+          <div class="hero-halo" aria-hidden="true"></div>
+          <div class="hero-portrait">
+            <img src="./site-assets/yijia-hero.png" alt="董易嘉吹泡泡的动漫形象" width="1000" height="1333">
+          </div>
+          <i class="particle" style="--x:12%;--y:20%;--size:3px;--duration:5.8s;--delay:-1s"></i>
+          <i class="particle" style="--x:78%;--y:16%;--size:4px;--duration:7.2s;--delay:-2s"></i>
+          <i class="particle" style="--x:89%;--y:38%;--size:2px;--duration:6.1s;--delay:-4s"></i>
+          <i class="particle" style="--x:23%;--y:44%;--size:2px;--duration:5.2s;--delay:-1.5s"></i>
+          <i class="particle" style="--x:71%;--y:55%;--size:3px;--duration:6.8s;--delay:-3s"></i>
+          <i class="particle" style="--x:17%;--y:68%;--size:4px;--duration:7.5s;--delay:-2.4s"></i>
+          <i class="particle" style="--x:84%;--y:75%;--size:3px;--duration:5.5s;--delay:-.7s"></i>
+          <i class="particle" style="--x:47%;--y:12%;--size:2px;--duration:6.4s;--delay:-3.5s"></i>
+          <i class="particle" style="--x:36%;--y:80%;--size:3px;--duration:5.9s;--delay:-2.8s"></i>
+          <i class="particle" style="--x:94%;--y:60%;--size:2px;--duration:7.1s;--delay:-1.8s"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="what-i-do">
+      <div class="container">
+        <header class="section-head center reveal">
+          <p class="section-kicker">What I Do</p>
+          <h2 class="section-title">我能做什么</h2>
+          <p class="section-subtitle">商业思维 × 内容创作 × 供应链视角</p>
+        </header>
+        <div class="capability-grid">
+          <article class="capability-card reveal">
+            <div class="card-image"><img src="./site-assets/cap-supply-chain.webp" alt="箱循环项目财务测算与商业分析" loading="lazy" width="1200" height="750"></div>
+            <div class="capability-content">
+              <h3>商业与供应链</h3>
+              <p>从「箱循环」逆向物流闭环到项目财务测算，把真实场景拆解成可执行的商业与供应链方案。</p>
+              <div class="tags"><span class="tag">箱循环</span><span class="tag">逆向物流</span><span class="tag">商业模型</span></div>
+            </div>
+          </article>
+          <article class="capability-card reveal reveal-delay-1">
+            <div class="card-image"><img src="./site-assets/cap-data-tech.webp" alt="箱循环扫码投递界面与移动端原型" loading="lazy" width="1200" height="750"></div>
+            <div class="capability-content">
+              <h3>数据与技术</h3>
+              <p>用 Vibe Coding 搭建「箱循环」全栈原型，并把扫码投递、积分返还与库存看板做成可交互产品。</p>
+              <div class="tags"><span class="tag">Vibe Coding</span><span class="tag">产品原型</span><span class="tag">数据看板</span></div>
+            </div>
+          </article>
+          <article class="capability-card reveal reveal-delay-2">
+            <div class="card-image"><img src="./site-assets/cap-new-media.webp" alt="校园影像、公众号内容与海报设计作品组合" loading="lazy" width="1200" height="750"></div>
+            <div class="capability-content">
+              <h3>审美与新媒体运营</h3>
+              <p>校园宣传片、抖音/B站内容、公众号推文与海报设计，覆盖策划、视觉表达和平台运营。</p>
+              <div class="tags"><span class="tag">视频创作</span><span class="tag">公众号</span><span class="tag">海报设计</span><span class="tag">平台运营</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat"><strong>30+</strong><span>内容作品产出</span></div>
+          <div class="stat"><strong>100万+</strong><span>视频最高播放量</span></div>
+          <div class="stat"><strong>40%</strong><span>活动报名提升率</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journey">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker">My Journey</p>
+          <h2 class="section-title">我的旅程</h2>
+        </header>
+        <div class="timeline">
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2026.07 - 2026.09 · 🔧 实习</p>
+              <h3>常州梦锦纸业有限公司</h3>
+              <p class="role">货代/物流销售</p>
+              <ul>
+                <li>B2B电商订单履约与交付跟进：协助跟进1688平台工业纸品订单全流程流转，审核客户定制要求，协同车间确认交期并向买家同步进度</li>
+                <li>出库质检与实物核验：对照发货清单严格复核批次规格，降低错发、漏发与客诉率</li>
+                <li>海外跨境业务探索：调研 Amazon 平台销售与履约模式，梳理双语规格说明与公英制换算要求</li>
+              </ul>
+              <div class="tags"><span class="tag">订单履约</span><span class="tag">跨境物流</span><span class="tag">供应链实操</span></div>
+            </div>
+          </article>
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2026.04 - 2026.09 · 🚀 项目</p>
+              <h3>光温双钥 · 智能多模态防伪加密系统</h3>
+              <p class="role">商业部分总负责人</p>
+              <ul>
+                <li>主导应用场景与竞品调研，输出行业可行性分析报告</li>
+                <li>测算规模化生产成本与损耗，搭建阶梯量产 BOM 表与单标成本模型</li>
+                <li>设计「材料销售 + 定制化验伪方案」双轮盈利模式，负责 BP 核心框架与财务测算</li>
+              </ul>
+              <div class="tags"><span class="tag">商业分析</span><span class="tag">成本建模</span><span class="tag">供应链落地</span></div>
+            </div>
+          </article>
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2026.03 - 2026.05 · 🚀 项目</p>
+              <h3>箱循环 · 校园电商包装回收与绿色物流平台</h3>
+              <p class="role">项目负责人</p>
+              <ul>
+                <li>自主设计「宿舍投放-驿站核验-分拣-循环流转」逆向物流闭环履约流程</li>
+                <li>采用 AI 协同编程（Vibe Coding）独立搭建平台原型，实现扫码投递、积分返还、库存看板等功能</li>
+                <li>测算单箱循环边际收益与减碳效益，建立轻量化商业闭环</li>
+              </ul>
+              <div class="tags"><span class="tag">逆向物流</span><span class="tag">AI开发</span><span class="tag">绿色供应链</span></div>
+            </div>
+          </article>
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2026.03 - 2026.05 · 🎬 创作</p>
+              <h3>古建载物，岁月传邮</h3>
+              <p class="role">AI视频创作者 · 总负责人</p>
+              <ul>
+                <li>以现代物流「揽收、中转、派送」为叙事外壳，用 AI 数字动画映射赵州桥、霍州署、福建土楼的结构智慧</li>
+                <li>获计算机设计大赛 AI+数媒动画短片类校赛一等奖（队长）</li>
+              </ul>
+              <div class="tags"><span class="tag">AI视频</span><span class="tag">文化创新</span><span class="tag">叙事设计</span></div>
+            </div>
+          </article>
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2026.02 - 2026.04 · 📊 研究</p>
+              <h3>绿色金融对新能源汽车企业 ESG 表现的影响机制研究</h3>
+              <p class="role">负责人 / 论文撰写</p>
+              <ul>
+                <li>以2013-2023年 A股新能源汽车上市公司为样本，运用固定效应、中介效应、调节效应模型开展实证研究</li>
+                <li>揭示绿色金融通过缓解融资约束、促进技术创新作用于 ESG 表现的核心路径</li>
+              </ul>
+              <div class="tags"><span class="tag">ESG研究</span><span class="tag">实证分析</span><span class="tag">绿色金融</span></div>
+            </div>
+          </article>
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2025.11 - 2025.12 · 🏆 竞赛</p>
+              <h3>ERP沙盘模拟训练团队</h3>
+              <p class="role">CEO</p>
+              <ul>
+                <li>统筹投标、采购、计划、配送、财务全流程规划，高效协调模块资源分配</li>
+                <li>获校 ERP 沙盘模拟大赛荣誉奖（主操手）；同期获全国供应链大赛实战赛省级二等奖（主操手）</li>
+              </ul>
+              <div class="tags"><span class="tag">团队统筹</span><span class="tag">沙盘推演</span><span class="tag">供应链实战</span></div>
+            </div>
+          </article>
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2025.09 - 至今 · 🎤 社团</p>
+              <h3>敬文书院辩论队</h3>
+              <p class="role">副领队 · 设备部部长</p>
+              <ul>
+                <li>2025年新生辩论赛亚军，参与校「至恒杯」、苏州市「独墅湖杯」等赛事</li>
+                <li>负责赛事拍摄与 B站视频运营；协助策划新生辩论赛，主导二辩三辩培训</li>
+              </ul>
+              <div class="tags"><span class="tag">逻辑思辨</span><span class="tag">活动策划</span><span class="tag">视频运营</span></div>
+            </div>
+          </article>
+          <article class="timeline-item reveal from-right">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <p class="timeline-meta">2013 - 至今 · 🎻 艺术根基</p>
+              <h3>小提琴 · 中国舞 双十级</h3>
+              <ul>
+                <li>小学一年级开始学习，双双达到十级（优秀）水平</li>
+                <li>十余年艺术训练塑造审美能力与专注力，延续至今的视频创作与内容表达</li>
+              </ul>
+              <div class="tags"><span class="tag">小提琴十级</span><span class="tag">中国舞十级</span><span class="tag">审美力</span><span class="tag">长期坚持</span></div>
+            </div>
+          </article>
+        </div>
+
+        <article class="education-card reveal" aria-labelledby="educationTitle">
+          <div>
+            <p class="section-kicker">Education</p>
+            <h3 id="educationTitle">苏州科技大学</h3>
+            <p class="degree">物流管理（本科）</p>
+            <p class="year">2025 - 2029</p>
+          </div>
+          <ul>
+            <li>校一等奖学金（专业排名前15%）</li>
+            <li>全国供应链大赛实战赛省级二等奖（主操手）</li>
+            <li>挑战杯东北振兴专项赛入围省赛（商业部分主要负责人）</li>
+            <li>中国国际大学生创新创业大赛校赛一等奖（商业部分主要负责人）</li>
+            <li>计算机设计大赛人工智能类应用校赛一等奖</li>
+            <li>能源经济学术创意大赛调研报告类、研究论文类校三等奖（队长）</li>
+            <li>校内实践：校融媒体中心影音部干事（官方视频号/抖音/B站运营，内容作品产出30+，单条视频最高播放破百万）；敬文书院新媒体中心运营部干事（公众号运营，多篇阅读破千，单场活动报名提升40%）</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt" id="portfolio">
+      <div class="container">
+        <header class="section-head center reveal">
+          <p class="section-kicker">Portfolio</p>
+          <h2 class="section-title">作品展示</h2>
+        </header>
+        <div class="portfolio-grid">
+          <article class="work-card reveal"><span class="work-index">01</span><div class="card-image"><img src="./site-assets/work-campus-film.webp" alt="苏州科技大学校园新年音乐会影像" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>🎬 校园宣传片系列</h3><p>迎新晚会 / 校庆影像记录</p><div class="tags"><span class="tag">拍摄</span><span class="tag">剪辑</span><span class="tag">校园内容</span></div><a class="work-link" href="https://v.douyin.com/ygT8X5t6I0k/" target="_blank" rel="noopener noreferrer">查看详情 →</a></div></article>
+          <article class="work-card reveal reveal-delay-1"><span class="work-index">02</span><div class="card-image"><img src="./site-assets/work-social-video.webp" alt="苏州科技大学校园内容视觉" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>📱 抖音/B站平台内容</h3><p>单条视频最高播放破百万</p><div class="tags"><span class="tag">短视频</span><span class="tag">平台运营</span></div><a class="work-link" href="https://v.douyin.com/jkAIPOh7IBY/" target="_blank" rel="noopener noreferrer">查看详情 →</a></div></article>
+          <article class="work-card reveal reveal-delay-2"><span class="work-index">03</span><div class="card-image"><img src="./site-assets/work-ancient-ai.webp" alt="AI动画《古建载物，岁月传邮》赵州桥画面" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>🏛️ AI动画《古建载物，岁月传邮》</h3><p>获奖作品</p><div class="tags"><span class="tag">AI动画</span><span class="tag">文化创新</span></div><a class="work-link placeholder-link" href="#">查看详情 →</a></div></article>
+          <article class="work-card reveal"><span class="work-index">04</span><div class="card-image"><img src="./site-assets/work-wechat.webp" alt="公众号冬至美食节推文封面" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>📝 公众号推文与活动策划</h3><p>阅读破千系列</p><div class="tags"><span class="tag">公众号</span><span class="tag">活动策划</span></div><a class="work-link" href="https://mp.weixin.qq.com/s/fjiW03fKbzsz8KeV2B79Ag" target="_blank" rel="noopener noreferrer">查看详情 →</a></div></article>
+          <article class="work-card reveal reveal-delay-1"><span class="work-index">05</span><div class="card-image"><img src="./site-assets/work-box-cycle.webp" alt="箱循环校园包装回收平台展示画面" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>📦 箱循环平台原型</h3><p>Vibe Coding 全栈 MVP</p><div class="tags"><span class="tag">Vibe Coding</span><span class="tag">绿色供应链</span></div><a class="work-link" href="https://m3cl0q3u8gvz.space.minimaxi.com/" target="_blank" rel="noopener noreferrer">查看详情 →</a></div></article>
+          <article class="work-card reveal reveal-delay-2"><span class="work-index">06</span><div class="card-image"><img src="./site-assets/work-poster-gallery.webp" alt="三组校园活动宣传海报作品" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>🎨 宣传物料与海报设计</h3><p>活动视觉与传播物料</p><div class="tags"><span class="tag">视觉设计</span><span class="tag">传播</span></div><a class="work-link placeholder-link" href="#">查看详情 →</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker">Skills & Interests</p>
+          <h2 class="section-title">技能与爱好</h2>
+        </header>
+        <div class="skills-layout">
+          <article class="skill-panel reveal">
+            <h3>技能</h3>
+            <div class="skill-group">
+              <h4>专业技能</h4>
+              <div class="skill-cloud">
+                <span class="skill-chip large">供应链仿真（Flexsim）</span><span class="skill-chip large">数据分析（Python）</span><span class="skill-chip medium">ERP系统</span><span class="skill-chip medium">商业计划书撰写</span><span class="skill-chip large">AI应用开发（Vibe Coding）</span><span class="skill-chip medium">视频剪辑（剪映·AE）</span><span class="skill-chip">新媒体运营（公众号·抖音·B站·秀米）</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h4>语言</h4>
+              <div class="skill-cloud"><span class="skill-chip large">英语（雅思6.5，可作全英文工作语言）</span><span class="skill-chip medium">普通话（二级甲等）</span></div>
+            </div>
+            <div class="skill-group">
+              <h4>证书</h4>
+              <div class="skill-cloud"><span class="skill-chip medium">计算机二级</span><span class="skill-chip medium">C2驾照</span></div>
+            </div>
+          </article>
+          <article class="skill-panel reveal reveal-delay-1">
+            <h3>爱好</h3>
+            <div class="hobby-list">
+              <div class="hobby"><span>🎻</span><span>小提琴（十级优秀）</span></div>
+              <div class="hobby"><span>💃</span><span>中国舞（十级）</span></div>
+              <div class="hobby"><span>🏋️</span><span>健身与运动</span></div>
+              <div class="hobby"><span>🎬</span><span>视频创作</span></div>
+              <div class="hobby"><span>🏛️</span><span>古建筑文化</span></div>
+              <div class="hobby"><span>♟️</span><span>辩论与思辨</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt contact" id="contact">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker">Contact</p>
+          <h2 class="section-title">让我们一起创造</h2>
+          <p class="section-subtitle">有项目想法或工作机会？随时联系我</p>
+        </header>
+        <form class="contact-wrap reveal" id="contactForm">
+          <div class="form-row">
+            <div class="field"><label for="name">姓名</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="email">邮箱</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="field"><label for="message">留言</label><textarea id="message" name="message" required></textarea></div>
+          <button class="button primary contact-submit" type="submit">发送消息</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+        <div class="contact-info reveal">
+          <a href="mailto:jace1jia07@163.com">📧 jace1jia07@163.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 董易嘉</span>
+      <div class="footer-social" aria-label="社交媒体">
+        <a class="social-link" href="mailto:jace1jia07@163.com" aria-label="发送邮件">邮</a>
+        <a class="social-link placeholder-social" href="#" aria-label="B站链接待补充">B</a>
+        <a class="social-link placeholder-social" href="#" aria-label="抖音链接待补充">抖</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const header = document.getElementById('siteHeader');
+      const progress = document.querySelector('.scroll-progress');
+      const menuButton = document.getElementById('menuButton');
+      const navLinks = document.getElementById('navLinks');
+      const heroVisual = document.getElementById('heroVisual');
+      const toast = document.getElementById('toast');
+      const chineseButton = document.getElementById('chineseButton');
+      const englishButton = document.getElementById('englishButton');
+      let toastTimer;
+      let currentLanguage = 'zh';
+
+      const translations = new Map([
+        ['跳到主要内容', 'Skip to main content'],
+        ['董易嘉', 'Yijia Dong'],
+        ['主页', 'Home'],
+        ['经历', 'Journey'],
+        ['作品', 'Portfolio'],
+        ['技能', 'Skills'],
+        ['联系', 'Contact'],
+        ['下载简历', 'Download Résumé'],
+        ['求职中 · Open to Work', 'Open to Work'],
+        ['你好，我是', "Hello, I'm"],
+        ['物流管理学习者 · 新媒体创作者 · 内容创作者 · 商业思维实践者', 'Logistics Management Student · New Media Creator · Content Creator · Business Thinker'],
+        ['在供应链与内容创作之间寻找交集，用商业思维做创意，用创意表达做商业。', 'I explore the intersection of supply chains and content creation—using business thinking to shape ideas, and creative expression to make business more compelling.'],
+        ['查看我的经历 →', 'Explore My Journey →'],
+        ['联系我', 'Contact Me'],
+        ['邮', '@'],
+        ['抖', 'D'],
+        ['我能做什么', 'What I Do'],
+        ['商业思维 × 内容创作 × 供应链视角', 'Business Thinking × Content Creation × Supply Chain Perspective'],
+        ['商业与供应链', 'Business & Supply Chain'],
+        ['从「箱循环」逆向物流闭环到项目财务测算，把真实场景拆解成可执行的商业与供应链方案。', 'From BoxCycle’s reverse-logistics loop to project financial modelling, I turn real-world scenarios into actionable business and supply chain plans.'],
+        ['箱循环', 'BoxCycle'],
+        ['逆向物流', 'Reverse Logistics'],
+        ['商业模型', 'Business Model'],
+        ['数据与技术', 'Data & Technology'],
+        ['用 Vibe Coding 搭建「箱循环」全栈原型，并把扫码投递、积分返还与库存看板做成可交互产品。', 'I built the full-stack BoxCycle prototype with Vibe Coding, turning QR drop-off, points rewards and inventory dashboards into an interactive product.'],
+        ['产品原型', 'Product Prototype'],
+        ['数据看板', 'Data Dashboard'],
+        ['审美与新媒体运营', 'Visuals & New Media'],
+        ['校园宣传片、抖音/B站内容、公众号推文与海报设计，覆盖策划、视觉表达和平台运营。', 'Campus films, Douyin/Bilibili content, WeChat articles and poster design—covering creative planning, visual storytelling and channel operations.'],
+        ['视频创作', 'Video Creation'],
+        ['公众号', 'WeChat'],
+        ['海报设计', 'Poster Design'],
+        ['平台运营', 'Channel Operations'],
+        ['内容作品产出', 'Content Pieces Produced'],
+        ['100万+', '1M+'],
+        ['视频最高播放量', 'Peak Video Views'],
+        ['活动报名提升率', 'Event Sign-up Growth'],
+        ['我的旅程', 'My Journey'],
+        ['2026.07 - 2026.09 · 🔧 实习', '2026.07 - 2026.09 · 🔧 Internship'],
+        ['常州梦锦纸业有限公司', 'Changzhou Mengjin Paper Co., Ltd.'],
+        ['货代/物流销售', 'Freight Forwarding / Logistics Sales'],
+        ['B2B电商订单履约与交付跟进：协助跟进1688平台工业纸品订单全流程流转，审核客户定制要求，协同车间确认交期并向买家同步进度', 'Supported end-to-end fulfilment for industrial paper orders on 1688, reviewed custom requirements, coordinated production lead times and kept buyers updated.'],
+        ['出库质检与实物核验：对照发货清单严格复核批次规格，降低错发、漏发与客诉率', 'Checked batch specifications against packing lists before dispatch, helping reduce incorrect shipments, omissions and customer complaints.'],
+        ['海外跨境业务探索：调研 Amazon 平台销售与履约模式，梳理双语规格说明与公英制换算要求', 'Researched Amazon sales and fulfilment models, including bilingual specifications and metric–imperial conversions for cross-border orders.'],
+        ['订单履约', 'Order Fulfilment'],
+        ['跨境物流', 'Cross-border Logistics'],
+        ['供应链实操', 'Supply Chain Operations'],
+        ['2026.04 - 2026.09 · 🚀 项目', '2026.04 - 2026.09 · 🚀 Project'],
+        ['光温双钥 · 智能多模态防伪加密系统', 'Light–Thermal Dual-Key · Intelligent Multimodal Anti-Counterfeiting System'],
+        ['商业部分总负责人', 'Business Lead'],
+        ['主导应用场景与竞品调研，输出行业可行性分析报告', 'Led use-case and competitor research and delivered an industry feasibility report.'],
+        ['测算规模化生产成本与损耗，搭建阶梯量产 BOM 表与单标成本模型', 'Modelled scaled production costs and losses, including tiered BOMs and per-label unit economics.'],
+        ['设计「材料销售 + 定制化验伪方案」双轮盈利模式，负责 BP 核心框架与财务测算', 'Designed a dual-revenue model combining material sales and customised verification solutions, and owned the business plan and financial forecasts.'],
+        ['商业分析', 'Business Analysis'],
+        ['成本建模', 'Cost Modelling'],
+        ['供应链落地', 'Supply Chain Delivery'],
+        ['2026.03 - 2026.05 · 🚀 项目', '2026.03 - 2026.05 · 🚀 Project'],
+        ['箱循环 · 校园电商包装回收与绿色物流平台', 'BoxCycle · Campus Packaging Recovery & Green Logistics Platform'],
+        ['项目负责人', 'Project Lead'],
+        ['自主设计「宿舍投放-驿站核验-分拣-循环流转」逆向物流闭环履约流程', 'Designed a closed-loop reverse-logistics flow covering dorm drop-off, station verification, sorting and recirculation.'],
+        ['采用 AI 协同编程（Vibe Coding）独立搭建平台原型，实现扫码投递、积分返还、库存看板等功能', 'Independently built the platform prototype with AI-assisted Vibe Coding, including QR drop-off, points rewards and inventory dashboards.'],
+        ['测算单箱循环边际收益与减碳效益，建立轻量化商业闭环', 'Calculated marginal returns and carbon savings per reused box to form a lightweight commercial loop.'],
+        ['AI开发', 'AI Development'],
+        ['绿色供应链', 'Green Supply Chain'],
+        ['2026.03 - 2026.05 · 🎬 创作', '2026.03 - 2026.05 · 🎬 Creative Project'],
+        ['古建载物，岁月传邮', 'Architecture Carries, Time Delivers'],
+        ['AI视频创作者 · 总负责人', 'AI Video Creator · Project Lead'],
+        ['以现代物流「揽收、中转、派送」为叙事外壳，用 AI 数字动画映射赵州桥、霍州署、福建土楼的结构智慧', 'Used the modern logistics journey—collection, transfer and delivery—as a narrative framework to reveal the structural wisdom of Zhaozhou Bridge, Huozhou Yamen and Fujian Tulou through AI animation.'],
+        ['获计算机设计大赛 AI+数媒动画短片类校赛一等奖（队长）', 'Won First Prize in the university Computer Design Competition’s AI + Digital Media Animation category as team leader.'],
+        ['AI视频', 'AI Video'],
+        ['文化创新', 'Cultural Innovation'],
+        ['叙事设计', 'Narrative Design'],
+        ['2026.02 - 2026.04 · 📊 研究', '2026.02 - 2026.04 · 📊 Research'],
+        ['绿色金融对新能源汽车企业 ESG 表现的影响机制研究', 'How Green Finance Influences ESG Performance in New Energy Vehicle Companies'],
+        ['负责人 / 论文撰写', 'Research Lead / Paper Author'],
+        ['以2013-2023年 A股新能源汽车上市公司为样本，运用固定效应、中介效应、调节效应模型开展实证研究', 'Conducted an empirical study of Chinese A-share NEV companies from 2013–2023 using fixed-effects, mediation and moderation models.'],
+        ['揭示绿色金融通过缓解融资约束、促进技术创新作用于 ESG 表现的核心路径', 'Identified financing-constraint relief and technological innovation as key channels through which green finance improves ESG performance.'],
+        ['ESG研究', 'ESG Research'],
+        ['实证分析', 'Empirical Analysis'],
+        ['绿色金融', 'Green Finance'],
+        ['2025.11 - 2025.12 · 🏆 竞赛', '2025.11 - 2025.12 · 🏆 Competition'],
+        ['ERP沙盘模拟训练团队', 'ERP Simulation Team'],
+        ['统筹投标、采购、计划、配送、财务全流程规划，高效协调模块资源分配', 'Coordinated bidding, purchasing, planning, distribution and finance while allocating resources across modules.'],
+        ['获校 ERP 沙盘模拟大赛荣誉奖（主操手）；同期获全国供应链大赛实战赛省级二等奖（主操手）', 'Received an honour award in the university ERP Simulation Competition and Provincial Second Prize in the National Supply Chain Competition as lead operator.'],
+        ['团队统筹', 'Team Leadership'],
+        ['沙盘推演', 'Business Simulation'],
+        ['供应链实战', 'Supply Chain Practice'],
+        ['2025.09 - 至今 · 🎤 社团', '2025.09 - Present · 🎤 Student Society'],
+        ['敬文书院辩论队', 'Jingwen College Debate Team'],
+        ['副领队 · 设备部部长', 'Deputy Captain · Head of Technical Operations'],
+        ['2025年新生辩论赛亚军，参与校「至恒杯」、苏州市「独墅湖杯」等赛事', 'Runner-up in the 2025 Freshman Debate Tournament; competed in the university Zhiheng Cup and Suzhou Dushu Lake Cup.'],
+        ['负责赛事拍摄与 B站视频运营；协助策划新生辩论赛，主导二辩三辩培训', 'Managed event filming and Bilibili content, helped organise the freshman tournament and led training for second and third speakers.'],
+        ['逻辑思辨', 'Critical Thinking'],
+        ['活动策划', 'Event Planning'],
+        ['视频运营', 'Video Operations'],
+        ['2013 - 至今 · 🎻 艺术根基', '2013 - Present · 🎻 Artistic Foundation'],
+        ['小提琴 · 中国舞 双十级', 'Violin · Chinese Dance — Grade 10'],
+        ['小学一年级开始学习，双双达到十级（优秀）水平', 'Began in first grade and achieved Grade 10 with distinction in both disciplines.'],
+        ['十余年艺术训练塑造审美能力与专注力，延续至今的视频创作与内容表达', 'More than a decade of artistic training shaped the visual sensitivity and focus I now bring to video and content creation.'],
+        ['小提琴十级', 'Violin Grade 10'],
+        ['中国舞十级', 'Chinese Dance Grade 10'],
+        ['审美力', 'Visual Sensibility'],
+        ['长期坚持', 'Long-term Discipline'],
+        ['苏州科技大学', 'Suzhou University of Science and Technology'],
+        ['物流管理（本科）', 'B.Mgt. in Logistics Management'],
+        ['校一等奖学金（专业排名前15%）', 'University First-Class Scholarship (top 15% of major)'],
+        ['全国供应链大赛实战赛省级二等奖（主操手）', 'Provincial Second Prize, National Supply Chain Competition (lead operator)'],
+        ['挑战杯东北振兴专项赛入围省赛（商业部分主要负责人）', 'Provincial round qualifier, Challenge Cup Northeast Revitalisation Special Competition (business lead)'],
+        ['中国国际大学生创新创业大赛校赛一等奖（商业部分主要负责人）', 'First Prize, university round of China International College Students’ Innovation Competition (business lead)'],
+        ['计算机设计大赛人工智能类应用校赛一等奖', 'First Prize, university Computer Design Competition — AI Application category'],
+        ['能源经济学术创意大赛调研报告类、研究论文类校三等奖（队长）', 'Third Prize in both Research Report and Academic Paper categories, Energy Economics Academic Creativity Competition (team leader)'],
+        ['校内实践：校融媒体中心影音部干事（官方视频号/抖音/B站运营，内容作品产出30+，单条视频最高播放破百万）；敬文书院新媒体中心运营部干事（公众号运营，多篇阅读破千，单场活动报名提升40%）', 'Campus practice: video team member at the University Media Centre, producing 30+ pieces for official video channels, Douyin and Bilibili, with one video surpassing one million views; operations team member at the Jingwen College New Media Centre, where multiple WeChat articles exceeded 1,000 reads and one event’s sign-ups rose by 40%.'],
+        ['作品展示', 'Selected Work'],
+        ['🎬 校园宣传片系列', '🎬 Campus Film Series'],
+        ['迎新晚会 / 校庆影像记录', 'Welcome events / Anniversary visual stories'],
+        ['拍摄', 'Filming'],
+        ['剪辑', 'Editing'],
+        ['校园内容', 'Campus Content'],
+        ['查看详情 →', 'View Project →'],
+        ['📱 抖音/B站平台内容', '📱 Douyin / Bilibili Content'],
+        ['单条视频最高播放破百万', 'One video surpassed one million views'],
+        ['短视频', 'Short-form Video'],
+        ['🏛️ AI动画《古建载物，岁月传邮》', '🏛️ AI Animation: Architecture Carries, Time Delivers'],
+        ['获奖作品', 'Award-winning project'],
+        ['AI动画', 'AI Animation'],
+        ['📝 公众号推文与活动策划', '📝 WeChat Articles & Event Campaigns'],
+        ['阅读破千系列', 'A series exceeding 1,000 reads'],
+        ['📦 箱循环平台原型', '📦 BoxCycle Platform Prototype'],
+        ['Vibe Coding 全栈 MVP', 'Full-stack MVP built with Vibe Coding'],
+        ['🎨 宣传物料与海报设计', '🎨 Campaign Materials & Poster Design'],
+        ['活动视觉与传播物料', 'Event visuals and campaign assets'],
+        ['视觉设计', 'Visual Design'],
+        ['传播', 'Communications'],
+        ['技能与爱好', 'Skills & Interests'],
+        ['专业技能', 'Professional Skills'],
+        ['供应链仿真（Flexsim）', 'Supply Chain Simulation (FlexSim)'],
+        ['数据分析（Python）', 'Data Analysis (Python)'],
+        ['ERP系统', 'ERP Systems'],
+        ['商业计划书撰写', 'Business Plan Writing'],
+        ['AI应用开发（Vibe Coding）', 'AI Application Development (Vibe Coding)'],
+        ['视频剪辑（剪映·AE）', 'Video Editing (CapCut · After Effects)'],
+        ['新媒体运营（公众号·抖音·B站·秀米）', 'New Media Operations (WeChat · Douyin · Bilibili · Xiumi)'],
+        ['语言', 'Languages'],
+        ['英语（雅思6.5，可作全英文工作语言）', 'English (IELTS 6.5; professional working proficiency)'],
+        ['普通话（二级甲等）', 'Mandarin (Level 2-A)'],
+        ['证书', 'Certificates'],
+        ['计算机二级', 'National Computer Rank Examination — Level 2'],
+        ['C2驾照', 'C2 Driving Licence'],
+        ['爱好', 'Interests'],
+        ['小提琴（十级优秀）', 'Violin (Grade 10, Distinction)'],
+        ['中国舞（十级）', 'Chinese Dance (Grade 10)'],
+        ['健身与运动', 'Fitness & Sports'],
+        ['古建筑文化', 'Historic Architecture'],
+        ['辩论与思辨', 'Debate & Critical Thinking'],
+        ['让我们一起创造', 'Let’s Create Together'],
+        ['有项目想法或工作机会？随时联系我', 'Have a project idea or opportunity? I’d love to hear from you.'],
+        ['姓名', 'Name'],
+        ['邮箱', 'Email'],
+        ['留言', 'Message'],
+        ['发送消息', 'Send Message'],
+        ['© 2026 董易嘉', '© 2026 Yijia Dong']
+      ]);
+
+      const attributeTranslations = new Map([
+        ['返回主页', 'Back to home'],
+        ['主导航', 'Primary navigation'],
+        ['语言切换', 'Language switch'],
+        ['打开导航菜单', 'Open navigation menu'],
+        ['关闭导航菜单', 'Close navigation menu'],
+        ['社交媒体', 'Social media'],
+        ['发送邮件', 'Send email'],
+        ['邮箱', 'Email'],
+        ['B站链接待补充', 'Bilibili link to be added'],
+        ['B站', 'Bilibili'],
+        ['抖音链接待补充', 'Douyin link to be added'],
+        ['抖音', 'Douyin'],
+        ['董易嘉动漫形象立绘', 'Illustrated portrait of Yijia Dong'],
+        ['董易嘉吹泡泡的动漫形象', 'Illustrated portrait of Yijia Dong blowing bubbles'],
+        ['箱循环项目财务测算与商业分析', 'BoxCycle financial model and business analysis'],
+        ['箱循环扫码投递界面与移动端原型', 'BoxCycle QR drop-off interface and mobile prototype'],
+        ['校园影像、公众号内容与海报设计作品组合', 'A selection of campus films, WeChat content and poster designs'],
+        ['苏州科技大学校园新年音乐会影像', 'Suzhou University of Science and Technology New Year concert'],
+        ['苏州科技大学校园内容视觉', 'Suzhou University of Science and Technology campus visuals'],
+        ['AI动画《古建载物，岁月传邮》赵州桥画面', 'Zhaozhou Bridge scene from the AI animation Architecture Carries, Time Delivers'],
+        ['公众号冬至美食节推文封面', 'Cover image for a WeChat article about the Winter Solstice food festival'],
+        ['箱循环校园包装回收平台展示画面', 'BoxCycle campus packaging recovery platform'],
+        ['三组校园活动宣传海报作品', 'Three poster designs for campus campaigns']
+      ]);
+
+      const translatableTextNodes = [];
+      const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || ['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+          return translations.has(node.nodeValue.trim()) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+      while (textWalker.nextNode()) {
+        const node = textWalker.currentNode;
+        translatableTextNodes.push({ node, original: node.nodeValue, key: node.nodeValue.trim() });
+      }
+
+      const translatableAttributes = [];
+      document.querySelectorAll('[aria-label], [title], [alt]').forEach((element) => {
+        ['aria-label', 'title', 'alt'].forEach((name) => {
+          const original = element.getAttribute(name);
+          if (original && attributeTranslations.has(original)) translatableAttributes.push({ element, name, original });
+        });
+      });
+
+      const setLanguage = (language) => {
+        currentLanguage = language;
+        const isEnglish = language === 'en';
+        translatableTextNodes.forEach(({ node, original, key }) => {
+          if (!isEnglish) {
+            node.nodeValue = original;
+            return;
+          }
+          const leading = original.match(/^\s*/)[0];
+          const trailing = original.match(/\s*$/)[0];
+          node.nodeValue = `${leading}${translations.get(key)}${trailing}`;
+        });
+        translatableAttributes.forEach(({ element, name, original }) => {
+          element.setAttribute(name, isEnglish ? attributeTranslations.get(original) : original);
+        });
+        document.documentElement.lang = isEnglish ? 'en' : 'zh-CN';
+        document.title = isEnglish ? 'Yijia Dong · Personal Website' : '董易嘉 · 个人网站';
+        document.querySelector('meta[name="description"]').setAttribute('content', isEnglish
+          ? 'Yijia Dong’s personal website: logistics management, new media creation, business thinking and content creation.'
+          : '董易嘉的个人网站：物流管理、新媒体创作、商业思维与内容创作。');
+        chineseButton.classList.toggle('active', !isEnglish);
+        englishButton.classList.toggle('active', isEnglish);
+        chineseButton.setAttribute('aria-pressed', String(!isEnglish));
+        englishButton.setAttribute('aria-pressed', String(isEnglish));
+        const menuOpen = navLinks.classList.contains('open');
+        menuButton.setAttribute('aria-label', isEnglish
+          ? (menuOpen ? 'Close navigation menu' : 'Open navigation menu')
+          : (menuOpen ? '关闭导航菜单' : '打开导航菜单'));
+      };
+
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add('show');
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2400);
+      };
+
+      const updateScroll = () => {
+        const top = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        header.classList.toggle('scrolled', top > 18);
+        progress.style.width = `${max > 0 ? Math.min(100, (top / max) * 100) : 0}%`;
+      };
+      updateScroll();
+      window.addEventListener('scroll', updateScroll, { passive: true });
+
+      menuButton.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', currentLanguage === 'en'
+          ? (open ? 'Close navigation menu' : 'Open navigation menu')
+          : (open ? '关闭导航菜单' : '打开导航菜单'));
+      });
+      navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -35px' });
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced && window.matchMedia('(pointer:fine)').matches) {
+        window.addEventListener('mousemove', (event) => {
+          if (window.scrollY > window.innerHeight * 1.1) return;
+          const x = (event.clientX / window.innerWidth - .5) * -9;
+          const y = (event.clientY / window.innerHeight - .5) * -7;
+          heroVisual.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }, { passive: true });
+      }
+
+      chineseButton.addEventListener('click', () => setLanguage('zh'));
+      englishButton.addEventListener('click', () => setLanguage('en'));
+      document.querySelectorAll('.placeholder-social').forEach((link) => link.addEventListener('click', (event) => {
+        event.preventDefault();
+        showToast(currentLanguage === 'en' ? 'Social links will be added soon.' : '社交账号链接待补充。');
+      }));
+      document.querySelectorAll('.placeholder-link').forEach((link) => link.addEventListener('click', (event) => {
+        event.preventDefault();
+        showToast(currentLanguage === 'en' ? 'The project detail link will be added soon.' : '作品详情链接待补充。');
+      }));
+
+      document.getElementById('contactForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const name = String(form.get('name') || '').trim();
+        const email = String(form.get('email') || '').trim();
+        const message = String(form.get('message') || '').trim();
+        const subject = encodeURIComponent(currentLanguage === 'en' ? `Message from personal website · ${name}` : `来自个人网站的留言 · ${name}`);
+        const body = encodeURIComponent(currentLanguage === 'en'
+          ? `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+          : `姓名：${name}\n邮箱：${email}\n\n留言：\n${message}`);
+        document.getElementById('formStatus').textContent = currentLanguage === 'en'
+          ? 'Your email app has opened. Please review and send the message.'
+          : '已为你打开邮件客户端，请确认后发送。';
+        window.location.href = `mailto:jace1jia07@163.com?subject=${subject}&body=${body}`;
+      });
+    })();
+  </script>
+</body>
+</html>
