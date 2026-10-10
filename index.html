@@ -236,6 +236,8 @@
       font-size: 17px;
       line-height: 1.8;
     }
+    .hero-keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .hero-keywords span { padding: 6px 11px; color: var(--muted); background: var(--surface); border-radius: 999px; font-size: 12px; }
     .hero-actions { display: flex; gap: 12px; margin-top: 34px; }
     .button {
       display: inline-flex;
@@ -458,6 +460,42 @@
     .work-link { display: inline-flex; margin-top: 21px; color: var(--blue); font-size: 14px; font-weight: 600; }
     .work-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
+    .project-showcase { display: grid; gap: 34px; margin-top: 72px; }
+    .project-feature { display: grid; grid-template-columns: 1.03fr .97fr; min-height: 520px; overflow: hidden; background: var(--white); border: 1px solid rgba(210,210,215,.75); border-radius: 30px; box-shadow: var(--shadow-sm); transition: transform .32s ease, box-shadow .32s ease; }
+    .project-feature:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .project-feature:nth-child(even) .project-visual { order: 2; }
+    .project-visual { position: relative; min-height: 440px; overflow: hidden; background: #e9e9ed; }
+    .project-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.75,.25,1); }
+    .project-visual.ui-shot { display: grid; place-items: center; padding: clamp(18px, 3vw, 36px); }
+    .project-visual.ui-shot.growth-shot { background: linear-gradient(145deg, #171716, #eee9df); }
+    .project-visual.ui-shot.fitness-shot { background: linear-gradient(145deg, #e7efe7, #f5eee4); }
+    .project-visual.ui-shot img { height: auto; max-height: 100%; object-fit: contain; border: 1px solid rgba(255,255,255,.36); border-radius: 16px; box-shadow: 0 24px 55px rgba(0,0,0,.18); }
+    .project-feature:hover .project-visual img { transform: scale(1.035); }
+    .project-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(255,255,255,.03), rgba(29,29,31,.12)); pointer-events: none; }
+    .project-number { position: absolute; top: 24px; left: 26px; z-index: 2; padding: 6px 10px; color: rgba(255,255,255,.88); background: rgba(29,29,31,.48); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; backdrop-filter: blur(12px); font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+    .project-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(34px, 5vw, 64px); }
+    .project-type { margin: 0 0 12px; color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .project-copy h3 { margin: 0; color: var(--ink); font-size: clamp(34px, 4vw, 52px); line-height: 1.05; letter-spacing: -.045em; }
+    .project-copy .project-en { margin: 10px 0 0; color: var(--muted); font-size: 17px; }
+    .project-story { display: grid; gap: 14px; margin: 28px 0; }
+    .project-story p { margin: 0; color: var(--body); font-size: 14px; line-height: 1.75; }
+    .project-story strong { color: var(--ink); }
+    .iteration-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 24px; }
+    .iteration-list span { padding: 9px 11px; color: var(--body); background: var(--surface); border-radius: 10px; font-size: 12px; }
+    .project-copy .work-link { align-self: flex-start; margin-top: 24px; }
+    .selected-work-title { margin: 86px 0 0; color: var(--ink); font-size: 28px; letter-spacing: -.03em; }
+
+    .workflow { margin-top: 64px; }
+    .workflow-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 26px; }
+    .workflow-step { position: relative; padding: 24px 18px; background: var(--surface); border-radius: 18px; }
+    .workflow-step:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -12px; z-index: 2; color: var(--line); transform: translateY(-50%); }
+    .workflow-step small { display: block; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+    .workflow-step strong { display: block; margin-top: 8px; color: var(--ink); font-size: 16px; }
+    .workflow-step span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .closing-note { padding: 90px 24px; text-align: center; background: var(--ink); }
+    .closing-note h2 { margin: 0; color: var(--white); font-size: clamp(42px, 7vw, 78px); line-height: 1; letter-spacing: -.055em; }
+    .closing-note p { margin: 18px 0 0; color: rgba(255,255,255,.58); font-size: 17px; }
+
     .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 64px; }
     .skill-panel { padding: 42px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); }
     .skill-panel h3 { margin: 0 0 30px; color: var(--ink); font-size: 30px; letter-spacing: -.03em; }
@@ -569,6 +607,10 @@
       .capability-card:last-child { grid-column: span 2; }
       .capability-card:last-child .card-image { aspect-ratio: 2 / 1; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .project-feature { grid-template-columns: 1fr; }
+      .project-feature:nth-child(even) .project-visual { order: 0; }
+      .project-visual { min-height: 360px; }
+      .workflow-grid { grid-template-columns: repeat(3, 1fr); }
       .education-card { grid-template-columns: 1fr; gap: 30px; }
       .skills-layout { grid-template-columns: 1fr; }
     }
@@ -590,6 +632,12 @@
       .hero-visual { height: 520px; min-height: 0; }
       .hero-portrait { inset: 2% -3% 0; }
       .capability-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
+      .project-showcase { gap: 20px; margin-top: 48px; }
+      .project-feature { min-height: 0; border-radius: 22px; }
+      .project-visual { min-height: 250px; }
+      .project-copy { padding: 28px 22px 32px; }
+      .iteration-list, .workflow-grid { grid-template-columns: 1fr; }
+      .workflow-step:not(:last-child)::after { display: none; }
       .capability-card:last-child { grid-column: auto; }
       .capability-card:last-child .card-image { aspect-ratio: 16 / 10; }
       .capability-content p { min-height: 0; }
@@ -649,10 +697,11 @@
         <div class="hero-copy">
           <div class="open-label reveal"><span class="status-dot" aria-hidden="true"></span>求职中 · Open to Work</div>
           <h1 class="reveal reveal-delay-1"><span>你好，我是</span><span>董易嘉</span></h1>
-          <p class="hero-role reveal reveal-delay-1">物流管理学习者 · 新媒体创作者 · 内容创作者 · 商业思维实践者</p>
-          <p class="hero-intro reveal reveal-delay-2">在供应链与内容创作之间寻找交集，用商业思维做创意，用创意表达做商业。</p>
+          <p class="hero-role reveal reveal-delay-1">Supply Chain · Product Thinking · Vibe Coding · Content &amp; Media</p>
+          <p class="hero-intro reveal reveal-delay-2">我是董易嘉，一名物流管理专业学生。我关注供应链，也喜欢从生活中发现那些「明明可以更方便一点」的问题，并尝试用 AI 和 Vibe Coding 把它们做成真正可以使用的产品。</p>
+          <div class="hero-keywords reveal reveal-delay-2"><span>Product Thinking</span><span>Vibe Coding</span><span>Supply Chain</span><span>Content &amp; Media</span><span>Business Analysis</span><span>Storytelling</span></div>
           <div class="hero-actions reveal reveal-delay-2">
-            <a class="button primary" href="#journey">查看我的经历 →</a>
+            <a class="button primary" href="#portfolio">View My Work →</a>
             <a class="button secondary" href="#contact">联系我</a>
           </div>
           <div class="social-row reveal reveal-delay-2" aria-label="社交媒体">
@@ -692,23 +741,23 @@
           <article class="capability-card reveal">
             <div class="card-image"><img src="./site-assets/cap-supply-chain.webp" alt="箱循环项目财务测算与商业分析" loading="lazy" width="1200" height="750"></div>
             <div class="capability-content">
-              <h3>商业与供应链</h3>
-              <p>从「箱循环」逆向物流闭环到项目财务测算，把真实场景拆解成可执行的商业与供应链方案。</p>
-              <div class="tags"><span class="tag">箱循环</span><span class="tag">逆向物流</span><span class="tag">商业模型</span></div>
+              <h3>产品思维 × Vibe Coding</h3>
+              <p>从成长管理、健身训练到「箱循环」，把日常与专业场景中的真实问题做成能够持续使用和迭代的产品。</p>
+              <div class="tags"><span class="tag">Product Thinking</span><span class="tag">Vibe Coding</span><span class="tag">产品迭代</span></div>
             </div>
           </article>
           <article class="capability-card reveal reveal-delay-1">
             <div class="card-image"><img src="./site-assets/cap-data-tech.webp" alt="箱循环扫码投递界面与移动端原型" loading="lazy" width="1200" height="750"></div>
             <div class="capability-content">
-              <h3>数据与技术</h3>
-              <p>用 Vibe Coding 搭建「箱循环」全栈原型，并把扫码投递、积分返还与库存看板做成可交互产品。</p>
-              <div class="tags"><span class="tag">Vibe Coding</span><span class="tag">产品原型</span><span class="tag">数据看板</span></div>
+              <h3>商业与供应链</h3>
+              <p>从订单履约、逆向物流到成本建模，用数据拆解商业问题，把想法转化为可执行的供应链方案。</p>
+              <div class="tags"><span class="tag">供应链</span><span class="tag">商业分析</span><span class="tag">成本建模</span></div>
             </div>
           </article>
           <article class="capability-card reveal reveal-delay-2">
             <div class="card-image"><img src="./site-assets/cap-new-media.webp" alt="校园影像、公众号内容与海报设计作品组合" loading="lazy" width="1200" height="750"></div>
             <div class="capability-content">
-              <h3>审美与新媒体运营</h3>
+              <h3>Content &amp; Media</h3>
               <p>校园宣传片、抖音/B站内容、公众号推文与海报设计，覆盖策划、视觉表达和平台运营。</p>
               <div class="tags"><span class="tag">视频创作</span><span class="tag">公众号</span><span class="tag">海报设计</span><span class="tag">平台运营</span></div>
             </div>
@@ -851,7 +900,7 @@
             <li>中国国际大学生创新创业大赛校赛一等奖（商业部分主要负责人）</li>
             <li>计算机设计大赛人工智能类应用校赛一等奖</li>
             <li>能源经济学术创意大赛调研报告类、研究论文类校三等奖（队长）</li>
-            <li>校内实践：校融媒体中心影音部干事（官方视频号/抖音/B站运营，内容作品产出30+，单条视频最高播放破百万）；敬文书院新媒体中心运营部干事（公众号运营，多篇阅读破千，单场活动报名提升40%）</li>
+            <li>校内实践：校融媒体中心影音部干事（2025.09 — 至今，官方视频号/抖音/B站运营，内容作品产出30+，单条视频最高播放破百万）；敬文书院新媒体中心运营部干事（公众号运营，多篇阅读破千，单场活动报名提升40%）</li>
           </ul>
         </article>
       </div>
@@ -860,9 +909,25 @@
     <section class="section alt" id="portfolio">
       <div class="container">
         <header class="section-head center reveal">
-          <p class="section-kicker">Portfolio</p>
-          <h2 class="section-title">作品展示</h2>
+          <p class="section-kicker">Things I've Built</p>
+          <h2 class="section-title">一些我真正做出来的东西。</h2>
+          <p class="section-subtitle">从自己的生活问题，到真实的专业问题，我开始把越来越多想法做成产品。</p>
         </header>
+        <div class="project-showcase">
+          <article class="project-feature reveal">
+            <div class="project-visual ui-shot growth-shot"><span class="project-number">01</span><img src="./site-assets/project-growth-app.jpg" alt="个人成长管理 App 真实界面" loading="lazy" width="1280" height="720"></div>
+            <div class="project-copy"><p class="project-type">Personal Growth · Product Design</p><h3>成长管理 App</h3><p class="project-en">Capture Your Growth</p><div class="project-story"><p><strong>Problem</strong> · 想法、任务与成长记录散落在不同地方，很难持续回看。</p><p><strong>Build</strong> · 让用户自然输入，由系统协助识别、分类并沉淀为一份持续生长的个人档案。</p><p><strong>Features</strong> · 账号体系、个人档案、智能分类、日期管理与跨设备同步。</p></div><div class="tags"><span class="tag">Personal Growth</span><span class="tag">AI</span><span class="tag">Vibe Coding</span><span class="tag">Product Design</span></div><a class="work-link" href="https://forward-growth-daily.muddystar32.chatgpt.site/" target="_blank" rel="noopener noreferrer">Explore Project ↗</a></div>
+          </article>
+          <article class="project-feature reveal">
+            <div class="project-visual ui-shot fitness-shot"><span class="project-number">02</span><img src="./site-assets/project-fitness-app.jpg" alt="健身训练 App 真实界面" loading="lazy" width="1265" height="712"></div>
+            <div class="project-copy"><p class="project-type">Fitness · UX · Iteration</p><h3>健身训练 App</h3><p class="project-en">Train Better</p><div class="project-story"><p><strong>Problem</strong> · 训练计划、动作顺序、组间休息与记录分散，影响真实训练节奏。</p><p><strong>Build</strong> · 围绕训练现场重做流程，让动作管理、计时与记录成为连续体验。</p><p><strong>Iteration</strong> · 从可演示的原型，持续迭代成自己真正使用的产品。</p></div><div class="iteration-list"><span>后台计时停止 → 持续计时</span><span>固定动作 → 自定义动作库</span><span>本地数据 → 账号与云端同步</span><span>Demo → Real Product</span></div><div class="tags"><span class="tag">Fitness</span><span class="tag">UX</span><span class="tag">Vibe Coding</span><span class="tag">Iteration</span></div><a class="work-link" href="https://qing-fit-daily-yijia.muddystar32.chatgpt.site/" target="_blank" rel="noopener noreferrer">Explore Project ↗</a></div>
+          </article>
+          <article class="project-feature reveal">
+            <div class="project-visual"><span class="project-number">03</span><img src="./site-assets/work-box-cycle.webp" alt="箱循环 GreenLoop 产品预览" loading="lazy" width="1200" height="900"></div>
+            <div class="project-copy"><p class="project-type">Supply Chain · Sustainability</p><h3>箱循环 GreenLoop</h3><p class="project-en">Campus Reverse Logistics Platform</p><div class="project-story"><p><strong>Problem</strong> · 校园快递包装大量一次性使用，回收路径与激励机制不够清晰。</p><p><strong>Build</strong> · 设计「宿舍投放—驿站核验—分拣—库存—二次领取」闭环，并以 Vibe Coding 搭建 MVP。</p><p><strong>Features</strong> · 扫码投递、积分返还、库存看板，把物流专业、产品思维与商业模型连接起来。</p></div><div class="tags"><span class="tag">Supply Chain</span><span class="tag">Reverse Logistics</span><span class="tag">Sustainability</span><span class="tag">Vibe Coding</span></div><a class="work-link" href="https://m3cl0q3u8gvz.space.minimaxi.com/" target="_blank" rel="noopener noreferrer">Explore Project ↗</a></div>
+          </article>
+        </div>
+        <h3 class="selected-work-title reveal">Content &amp; Media · Selected Work</h3>
         <div class="portfolio-grid">
           <article class="work-card reveal"><span class="work-index">01</span><div class="card-image"><img src="./site-assets/work-campus-film.webp" alt="苏州科技大学校园新年音乐会影像" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>🎬 校园宣传片系列</h3><p>迎新晚会 / 校庆影像记录</p><div class="tags"><span class="tag">拍摄</span><span class="tag">剪辑</span><span class="tag">校园内容</span></div><a class="work-link" href="https://v.douyin.com/ygT8X5t6I0k/" target="_blank" rel="noopener noreferrer">查看详情 →</a></div></article>
           <article class="work-card reveal reveal-delay-1"><span class="work-index">02</span><div class="card-image"><img src="./site-assets/work-social-video.webp" alt="苏州科技大学校园内容视觉" loading="lazy" width="1200" height="900"></div><div class="work-content"><h3>📱 抖音/B站平台内容</h3><p>单条视频最高播放破百万</p><div class="tags"><span class="tag">短视频</span><span class="tag">平台运营</span></div><a class="work-link" href="https://v.douyin.com/jkAIPOh7IBY/" target="_blank" rel="noopener noreferrer">查看详情 →</a></div></article>
@@ -880,6 +945,7 @@
           <p class="section-kicker">Skills & Interests</p>
           <h2 class="section-title">技能与爱好</h2>
         </header>
+        <div class="workflow reveal"><p class="section-kicker">How I Work</p><div class="workflow-grid"><div class="workflow-step"><small>01 DISCOVER</small><strong>发现问题</strong><span>从真实使用场景开始</span></div><div class="workflow-step"><small>02 THINK</small><strong>拆需求</strong><span>找到最关键的路径</span></div><div class="workflow-step"><small>03 BUILD</small><strong>做出来</strong><span>快速形成可用版本</span></div><div class="workflow-step"><small>04 USE</small><strong>自己使用</strong><span>让体验接受真实检验</span></div><div class="workflow-step"><small>05 ITERATE</small><strong>继续迭代</strong><span>把反馈变成下一版</span></div></div></div>
         <div class="skills-layout">
           <article class="skill-panel reveal">
             <h3>技能</h3>
@@ -913,6 +979,8 @@
       </div>
     </section>
 
+    <section class="closing-note reveal"><h2>Still learning. Still building.</h2><p>我还有很多不会的东西，也还有很多想做的东西。</p></section>
+
     <section class="section alt contact" id="contact">
       <div class="container">
         <header class="section-head reveal">
@@ -938,7 +1006,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>© 2026 董易嘉</span>
+      <span>© 2026 董易嘉 · Supply Chain · Product Thinking · Vibe Coding · Content &amp; Media</span>
       <div class="footer-social" aria-label="社交媒体">
         <a class="social-link" href="mailto:jace1jia07@163.com" aria-label="发送邮件">邮</a>
         <a class="social-link placeholder-social" href="#" aria-label="B站链接待补充">B</a>
@@ -1123,7 +1191,42 @@
         ['邮箱', 'Email'],
         ['留言', 'Message'],
         ['发送消息', 'Send Message'],
-        ['© 2026 董易嘉', '© 2026 Yijia Dong']
+        ['© 2026 董易嘉 · Supply Chain · Product Thinking · Vibe Coding · Content & Media', '© 2026 Yijia Dong · Supply Chain · Product Thinking · Vibe Coding · Content & Media'],
+        ['我是董易嘉，一名物流管理专业学生。我关注供应链，也喜欢从生活中发现那些「明明可以更方便一点」的问题，并尝试用 AI 和 Vibe Coding 把它们做成真正可以使用的产品。', 'I’m Yijia Dong, a Logistics Management student. I care about supply chains, notice everyday moments that could work better, and use AI and Vibe Coding to turn those ideas into products people can actually use.'],
+        ['产品思维 × Vibe Coding', 'Product Thinking × Vibe Coding'],
+        ['从成长管理、健身训练到「箱循环」，把日常与专业场景中的真实问题做成能够持续使用和迭代的产品。', 'From personal growth and fitness training to BoxCycle, I turn real problems from daily life and professional contexts into products that can be used and continuously improved.'],
+        ['产品迭代', 'Product Iteration'],
+        ['从订单履约、逆向物流到成本建模，用数据拆解商业问题，把想法转化为可执行的供应链方案。', 'From order fulfilment and reverse logistics to cost modelling, I use data to break down business problems and turn ideas into actionable supply chain solutions.'],
+        ['供应链', 'Supply Chain'],
+        ['校内实践：校融媒体中心影音部干事（2025.09 — 至今，官方视频号/抖音/B站运营，内容作品产出30+，单条视频最高播放破百万）；敬文书院新媒体中心运营部干事（公众号运营，多篇阅读破千，单场活动报名提升40%）', 'Campus practice: University Media Centre video team member (Sep 2025–Present), producing 30+ pieces for official video channels, Douyin and Bilibili, with one video surpassing one million views; Jingwen College New Media Centre operations team member, where multiple WeChat articles exceeded 1,000 reads and one event’s sign-ups rose by 40%.'],
+        ['一些我真正做出来的东西。', "Things I've Built."],
+        ['从自己的生活问题，到真实的专业问题，我开始把越来越多想法做成产品。', 'From problems in my own life to real professional challenges, I am turning more and more ideas into products.'],
+        ['成长管理 App', 'Personal Growth App'],
+        ['想法、任务与成长记录散落在不同地方，很难持续回看。', 'Ideas, tasks and growth records were scattered across different places, making reflection difficult.'],
+        ['让用户自然输入，由系统协助识别、分类并沉淀为一份持续生长的个人档案。', 'Users write naturally while the system recognises, organises and develops the input into an evolving personal profile.'],
+        ['账号体系、个人档案、智能分类、日期管理与跨设备同步。', 'Accounts, personal profiles, intelligent categorisation, date management and cross-device sync.'],
+        ['健身训练 App', 'Fitness Training App'],
+        ['训练计划、动作顺序、组间休息与记录分散，影响真实训练节奏。', 'Training plans, exercise order, rest intervals and records were fragmented, interrupting real workout flow.'],
+        ['围绕训练现场重做流程，让动作管理、计时与记录成为连续体验。', 'I rebuilt the flow around the gym experience so exercise management, timing and records work as one continuous journey.'],
+        ['从可演示的原型，持续迭代成自己真正使用的产品。', 'I kept iterating beyond a demo until it became a product I genuinely use.'],
+        ['后台计时停止 → 持续计时', 'Timer stops in background → Continues running'],
+        ['固定动作 → 自定义动作库', 'Fixed exercises → Custom exercise library'],
+        ['本地数据 → 账号与云端同步', 'Local data → Account and cloud sync'],
+        ['箱循环 GreenLoop', 'BoxCycle GreenLoop'],
+        ['校园快递包装大量一次性使用，回收路径与激励机制不够清晰。', 'Campus delivery packaging is often used once, with unclear recovery routes and incentives.'],
+        ['设计「宿舍投放—驿站核验—分拣—库存—二次领取」闭环，并以 Vibe Coding 搭建 MVP。', 'I designed a closed loop from dorm drop-off and station verification to sorting, inventory and second pickup, then built the MVP with Vibe Coding.'],
+        ['扫码投递、积分返还、库存看板，把物流专业、产品思维与商业模型连接起来。', 'QR drop-off, points rewards and an inventory dashboard connect logistics expertise, product thinking and the business model.'],
+        ['发现问题', 'Discover'],
+        ['从真实使用场景开始', 'Start with a real use case'],
+        ['拆需求', 'Think'],
+        ['找到最关键的路径', 'Find the essential path'],
+        ['做出来', 'Build'],
+        ['快速形成可用版本', 'Create a usable version quickly'],
+        ['自己使用', 'Use'],
+        ['让体验接受真实检验', 'Test the experience in real life'],
+        ['继续迭代', 'Iterate'],
+        ['把反馈变成下一版', 'Turn feedback into the next version'],
+        ['我还有很多不会的东西，也还有很多想做的东西。', 'There is still so much for me to learn—and so much I want to build.']
       ]);
 
       const attributeTranslations = new Map([
@@ -1149,7 +1252,10 @@
         ['AI动画《古建载物，岁月传邮》赵州桥画面', 'Zhaozhou Bridge scene from the AI animation Architecture Carries, Time Delivers'],
         ['公众号冬至美食节推文封面', 'Cover image for a WeChat article about the Winter Solstice food festival'],
         ['箱循环校园包装回收平台展示画面', 'BoxCycle campus packaging recovery platform'],
-        ['三组校园活动宣传海报作品', 'Three poster designs for campus campaigns']
+        ['三组校园活动宣传海报作品', 'Three poster designs for campus campaigns'],
+        ['个人成长管理 App 真实界面', 'Personal Growth App interface'],
+        ['健身训练 App 真实界面', 'Fitness Training App interface'],
+        ['箱循环 GreenLoop 产品预览', 'BoxCycle GreenLoop preview']
       ]);
 
       const translatableTextNodes = [];
